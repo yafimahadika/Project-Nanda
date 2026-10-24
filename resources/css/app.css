@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .app-sidebar {
+        @apply w-full transition-all duration-300 ease-in-out lg:w-72;
+    }
+
+    .app-content {
+        @apply transition-all duration-300 ease-in-out lg:pl-72;
+    }
+
+    .sidebar-link {
+        @apply flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition;
+    }
+
+    .sidebar-toggle {
+        @apply hidden h-9 w-9 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-cyan-200 hover:bg-cyan-50 hover:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 lg:inline-flex;
+    }
+
+    .app-modal {
+        @apply fixed inset-0 z-50 flex items-center justify-center px-4 py-6;
+    }
+
+    .app-modal__backdrop {
+        @apply absolute inset-0 bg-slate-950/50;
+    }
+
+    .app-modal__panel {
+        @apply relative z-10 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-md bg-white shadow-xl;
+    }
+
+    .app-modal__close {
+        @apply inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500;
+    }
+
+    body.sidebar-collapsed .app-sidebar {
+        @apply lg:w-20;
+    }
+
+    body.sidebar-collapsed .app-content {
+        @apply lg:pl-20;
+    }
+
+    body.sidebar-collapsed .sidebar-label {
+        @apply lg:pointer-events-none lg:hidden;
+    }
+
+    body.sidebar-collapsed .sidebar-link {
+        @apply lg:justify-center lg:px-2;
+    }
+
+    .office-login-shell {
+        @apply grid min-h-screen lg:grid-cols-[1.1fr_0.9fr];
+    }
+
+    .office-login-brand {
+        @apply relative hidden overflow-hidden bg-slate-100 lg:block;
+    }
+
+    .office-login-brand::before {
+        content: "";
+        @apply absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(14,165,233,0.18),transparent_32%),linear-gradient(135deg,rgba(248,250,252,1),rgba(226,232,240,0.92))];
+    }
+
+    .office-login-brand::after {
+        content: "";
+        @apply absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-white/70 to-transparent;
+    }
+
+    .office-login-brand__content {
+        @apply relative z-10 flex min-h-screen flex-col justify-start px-12 py-10 xl:px-16;
+    }
+
+    .office-login-logo {
+        @apply h-auto w-64 object-contain;
+        filter: drop-shadow(0 14px 22px rgba(8, 47, 73, 0.16));
+    }
+
+    .office-login-copy {
+        @apply mt-28 max-w-xl;
+    }
+
+    .office-login-panel {
+        @apply flex min-h-screen items-center justify-center bg-slate-950 px-5 py-10 sm:px-8;
+    }
+
+    .office-login-card {
+        @apply w-full max-w-md rounded-md border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/70 sm:p-9;
+    }
+
+    .office-login-input {
+        @apply mt-2 block w-full rounded-md border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-cyan-500;
+    }
+
+    .office-password-toggle {
+        @apply absolute inset-y-1.5 right-1.5 rounded-md px-3 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-50 hover:text-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-500;
+    }
+
+    .office-login-button {
+        @apply flex w-full items-center justify-center rounded-md bg-cyan-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2;
+    }
+}
+
+@media print {
+    .app-sidebar,
+    .app-content > header,
+    .app-content > footer {
+        display: none !important;
+    }
+
+    .app-content {
+        padding-left: 0 !important;
+    }
+
+    main {
+        padding: 0 !important;
+    }
+
+    body {
+        background: #ffffff !important;
+    }
+}
